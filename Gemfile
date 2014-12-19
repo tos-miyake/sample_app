@@ -12,7 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
+gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -39,11 +39,10 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem "haml-rails"
-# gem "therubyracer"
-# gem "less-rails"
+gem "less-rails"
 gem "twitter-bootstrap-rails"
 
-group :test, :development do
+group :development, :test do
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-stack_explorer'
@@ -53,10 +52,12 @@ group :test, :development do
   gem 'binding_of_caller'
 
   gem 'hirb'
-  # gem 'hirb-unicode'
+  gem 'hirb-unicode'
 
   gem 'tapp'
+  # コンソールでのデータの表示を見やすくする
   gem 'awesome_print'
+  # asset取得系のログを出力しない
   gem 'quiet_assets'
   gem 'annotate', git: 'git://github.com/ctran/annotate_models.git'
   gem 'timecop'
@@ -67,6 +68,12 @@ group :test, :development do
   gem "faker"
 end
 group :production do
+  # heroku
   gem 'rails_12factor', '0.0.2'
+end
+group :test do
+  gem 'nokogiri'
+  gem 'selenium-webdriver'
+  gem 'capybara'
 end
 
